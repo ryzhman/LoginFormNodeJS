@@ -16,5 +16,16 @@ module.exports = {
                 presets: ['es2015']
             }
         }]
-    }
+    },
+    module: {
+        loaders: [{
+            test: /\.hbs/,
+            loader: "handlebars-template-loader"
+        }]
+    },
+    resolve: {
+        alias: {
+            handlebars: 'handlebars/dist/handlebars.min.js'
+        }
+    },
 };
