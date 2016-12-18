@@ -6,7 +6,7 @@ module.exports = {
 };
 
 function initForm() {
-	var parent = document.getElementById("divForLoginForm");
+	var parent = document.getElementById("page");
 	var loginForm = document.createElement('form');
 	loginForm.setAttribute('class', 'login');
 	var array = new Array(parent, loginForm);

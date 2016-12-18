@@ -44,33 +44,45 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var auth = __webpack_require__(1);
-	var buildFroms = __webpack_require__(3);
-	var Handlebars = __webpack_require__(4);
+	'use strict';
 
+	var adminPage = __webpack_require__(1);
+	var auth = __webpack_require__(2);
+	var buildForms = __webpack_require__(4);
+	var Handlebars = __webpack_require__(5);
+	var users = __webpack_require__(3);
 
-	buildFroms.createLoginForm();
-	console.log("Hello from bundle.js");
+	buildForms.createLoginForm();
 
+	var usersList = users.getUsers();
+	console.log(usersList);
+	var template = Handlebars.compile(adminPage);
 
+	// var main = adminPage.getElementById('parent');
+	console.log(adminPage);
 
-
-
-
-
+	// document.getElementById("adminPage").contentDocument.getElementById("usersTable").innerHTML = template(usersList);
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	module.exports = "<!-- <script id=\"entry-template\" type=\"text/x-handlebars-template\"> -->\r\n<div>\r\n  <h1>Hello {{admin.name}}</h1>\r\n  <h2>Last time you logged in {{admin.lastVisit}}</h2>\r\n  <br>\r\n  <br>\r\n</div> \r\n<!-- </script> -->\r\n<div id=\"parent\">\r\n\t<div id=\"usersTable\">\r\n\t\t <!-- <script id=\"some-template\" type=\"text/x-handlebars-template\"> -->\r\n\t\t<table>\r\n\t\t\t<caption>The list of all users</caption>\r\n\t\t    <thead> \r\n\t\t       <th>User name</th>\r\n\t\t\t    <th>Password</th> \r\n\t\t\t    <th>Last login</th>\r\n\t\t\t    <th>Access</th>\r\n\t\t\t    <th>Group</th>\r\n\t\t    </thead> \r\n\t\t    <tbody> \r\n\t\t       {{#each usersList}} \r\n\t\t        <tr> \r\n\t\t            <td>{{name}}</td> \r\n\t\t            <td>{{password}}</td> \r\n\t\t            <td>{{lastVisit}}</td> \r\n\t\t            <td>{{access}}</td> \r\n\t\t            <td>{{group}}</td> \r\n\t\t        </tr> \r\n\t\t       {{/each}} \r\n\t\t    </tbody> \r\n\t\t</table> \r\n\t\t<!-- </script> -->\r\n\t</div> \r\n</div>";
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var users = __webpack_require__(2);
+	"use strict";
+
+	var users = __webpack_require__(3);
 
 	var auth = {
-		validateCredentials: function(event) {
+		validateCredentials: function validateCredentials(event) {
 			event.preventDefault(); //prevent page from reloading
 			var login = document.getElementById("login").value;
 			var pass = document.getElementById("pass").value;
-			
+
 			if (login != null && login != undefined && pass != null && pass != undefined) {
 				var user = validateLogin(login);
 				if (user !== null) {
@@ -110,50 +122,56 @@
 
 	function validateSuccess(user) {
 		console.log(user);
-		if(user.group === 'admin'){
-			window.location.href="./src/templates/admin.html";
+		if (user.group === 'admin') {
+			window.location.href = "./src/tmpl/admin.html";
 		} else if (user.group === 'client') {
-			window.location.href="./src/templates/userProfile.html";
+			window.location.href = "./src/tmpl/userProfile.html";
 		}
 	}
 
 	module.exports = auth;
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports) {
 
+	"use strict";
+
 	module.exports = {
-		getUsers: function() {
-			return [{
-				name: "user",
-				pass: "user",
-				access: "limited",
-				lastVisit: new Date().toString(),
-				group: 'client'
-			}, {
-				name: "admin",
-				pass: "admin",
-				access: "unlimited",
-				lastVisit: new Date().toString(),
-				group: 'admin'
-			}];
-		}
+		getUsers: getUsers
 	};
 
+	function getUsers() {
+		return [{
+			name: "user",
+			pass: "user",
+			access: "limited",
+			lastVisit: new Date().toString(),
+			group: 'client'
+		}, {
+			name: "admin",
+			pass: "admin",
+			access: "unlimited",
+			lastVisit: new Date().toString(),
+			group: 'admin'
+		}];
+	}
+
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var auth = __webpack_require__(1);
+	'use strict';
+
+	var auth = __webpack_require__(2);
 
 	module.exports = {
 		createLoginForm: createForm,
-		hello: console.log('Hello from formBuilder.js'),
+		hello: console.log('Hello from formBuilder.js')
 	};
 
 	function initForm() {
-		var parent = document.getElementById("divForLoginForm");
+		var parent = document.getElementById("page");
 		var loginForm = document.createElement('form');
 		loginForm.setAttribute('class', 'login');
 		var array = new Array(parent, loginForm);
@@ -221,7 +239,7 @@
 	};
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**!

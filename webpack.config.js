@@ -1,7 +1,7 @@
 module.exports = {
-    entry: './src/js/main.js',
+    entry: './src/js/script.js',
     output: {
-        path: './build',
+        path: './public',
         filename: "bundle.js"
     },
     module: {
@@ -10,22 +10,16 @@ module.exports = {
             loader: "html"
         }, {
             test: /\.js$/,
-            exclude: './node_modules/',
+            exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
             query: {
                 presets: ['es2015']
             }
         }]
     },
-    module: {
-        loaders: [{
-            test: /\.hbs/,
-            loader: "handlebars-template-loader"
-        }]
-    },
     resolve: {
         alias: {
-            handlebars: 'handlebars/dist/handlebars.min.js'
+            handlebars: 'handlebars/dist/Handlebars.min.js'
         }
     },
 };

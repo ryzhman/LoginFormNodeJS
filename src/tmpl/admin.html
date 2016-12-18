@@ -1,0 +1,35 @@
+<!-- <script id="entry-template" type="text/x-handlebars-template"> -->
+<div>
+  <h1>Hello {{admin.name}}</h1>
+  <h2>Last time you logged in {{admin.lastVisit}}</h2>
+  <br>
+  <br>
+</div> 
+<!-- </script> -->
+<div id="parent">
+	<div id="usersTable">
+		 <!-- <script id="some-template" type="text/x-handlebars-template"> -->
+		<table>
+			<caption>The list of all users</caption>
+		    <thead> 
+		       <th>User name</th>
+			    <th>Password</th> 
+			    <th>Last login</th>
+			    <th>Access</th>
+			    <th>Group</th>
+		    </thead> 
+		    <tbody> 
+		       {{#each usersList}} 
+		        <tr> 
+		            <td>{{name}}</td> 
+		            <td>{{password}}</td> 
+		            <td>{{lastVisit}}</td> 
+		            <td>{{access}}</td> 
+		            <td>{{group}}</td> 
+		        </tr> 
+		       {{/each}} 
+		    </tbody> 
+		</table> 
+		<!-- </script> -->
+	</div> 
+</div>

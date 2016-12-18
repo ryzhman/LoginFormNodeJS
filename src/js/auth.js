@@ -46,9 +46,9 @@ function validateFail() {
 function validateSuccess(user) {
 	console.log(user);
 	if(user.group === 'admin'){
-		window.location.href="./src/templates/admin.html";
+		window.location.href="./src/tmpl/admin.html";
 	} else if (user.group === 'client') {
-		window.location.href="./src/templates/userProfile.html";
+		window.location.href="./src/tmpl/userProfile.html";
 	}
 }
 

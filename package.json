@@ -1,26 +1,22 @@
 {
-  "name": "loginodejs",
+  "name": "node_frontend",
   "version": "1.0.0",
-  "description": "Study project writen with a use of NodeJS, Wepback, Npm and other JS libs",
-  "main": "./build/bundle.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Alex",
-  "license": "ISC",
+  "description": "",
+  "main": "index.html",
   "dependencies": {
     "handlebars": "^4.0.6",
-    "lodash": "^4.17.2",
     "webpack": "^1.14.0"
   },
-  "browser": {
-    "./rng.js": "./rng-browser.js"
-  },
   "devDependencies": {
-    "babel-core": "^6.20.0",
+    "babel-core": "^6.18.2",
     "babel-loader": "^6.2.9",
     "babel-preset-es2015": "^6.18.0",
     "html-loader": "^0.4.4",
     "webpack": "^1.14.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
