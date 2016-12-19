@@ -2,19 +2,28 @@ var adminPage = require('../tmpl/admin.html');
 var auth = require('./auth.js');
 var buildForms = require('./formBuilder.js');
 var Handlebars = require('handlebars');
-var users = require('./users.js');
 
 buildForms.createLoginForm();
 
 
-var usersList = users.getUsers();
-console.log(usersList);
-var template = Handlebars.compile(adminPage);
-
-// var main = adminPage.getElementById('parent');
-console.log(adminPage);
-
-// document.getElementById("adminPage").contentDocument.getElementById("usersTable").innerHTML = template(usersList);
 
 
 
+/*function renderPage(page) {
+	var user = userService.getUser();
+	var users = userService.getAll();
+	var pageContainer = document.getElementById('page');
+	var template = pages[page].template;
+
+	var readyTmpl = Handlebars.compile(template);
+
+	if (page === 'admin') {
+		pageContainer.innerHTML = readyTmpl({
+			users: users
+		});
+	} else {
+		pageContainer.innerHTML = readyTmpl(user);
+	}
+*/	// console.log(adminPage);
+
+	// document.getElementById("adminPage").contentDocument.getElementById("usersTable").innerHTML = template(usersList);

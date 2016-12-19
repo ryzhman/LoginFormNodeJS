@@ -1,7 +1,7 @@
 <!-- <script id="entry-template" type="text/x-handlebars-template"> -->
 <div>
-  <h1>Hello {{admin.name}}</h1>
-  <h2>Last time you logged in {{admin.lastVisit}}</h2>
+  <h1>Hello {{name}}</h1>
+  <h2>Last time you logged in {{lastVisit}}</h2>
   <br>
   <br>
 </div> 
@@ -22,7 +22,7 @@
 		       {{#each usersList}} 
 		        <tr> 
 		            <td>{{name}}</td> 
-		            <td>{{password}}</td> 
+		            <td>{{pass}}</td> 
 		            <td>{{lastVisit}}</td> 
 		            <td>{{access}}</td> 
 		            <td>{{group}}</td> 
